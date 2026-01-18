@@ -68,11 +68,23 @@ export function Generate() {
         <div className="ui-card__footer">
           <Button variant="secondary">View Telemetry</Button>
         </div>
-      </Card>
-      <Card title="Flavor Matrix" eyebrow="Experimental">
-        <p>Cross-pollinate ingredients with trending palettes across regions.</p>
-        <Button variant="secondary">Explore Matrix</Button>
-      </Card>
+      </header>
+      <div className="grid week">
+        {days.map((day) => (
+          <MenuDayCard
+            key={day.id}
+            id={day.id}
+            weekday={day.weekday}
+            dateLabel={day.dateLabel}
+            dish={day.dish}
+            slotItems={day.slotItems}
+            locked={day.locked}
+            isSpinning={day.isSpinning}
+            onToggleLock={toggleLock}
+            onRegenerate={regenerateDay}
+          />
+        ))}
+      </div>
     </div>
   );
 }
