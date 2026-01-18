@@ -16,6 +16,13 @@
   box-shadow: 0 0 20px rgba(70, 246, 255, 0.35);
 }
 
+.ui-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
+
 .ui-button--secondary {
   background: rgba(20, 30, 45, 0.8);
   border-color: rgba(120, 160, 255, 0.4);
