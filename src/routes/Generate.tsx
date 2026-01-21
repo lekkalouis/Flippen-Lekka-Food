@@ -162,6 +162,16 @@ export function Generate() {
     ? recipes.find((recipe) => recipe.id === selectedDay.recipeId)
     : null;
 
+  const menuSummary = menu.days.map((day) => {
+    const recipe = recipes.find((item) => item.id === day.recipeId);
+    return {
+      date: day.date,
+      recipeName: recipe?.name ?? 'Awaiting selection',
+      recipeDescription: recipe?.description ?? 'Tap Generate to assign a dish.',
+      locked: day.locked,
+    };
+  });
+
   return (
     <div className="generate-layout">
       <div className="generate-layout__controls">
@@ -334,6 +344,26 @@ export function Generate() {
               <strong>Local market snapshot</strong>
             </div>
           </div>
+        </Card>
+
+        <Card title="Weekly menu summary" eyebrow="Print-ready">
+          <p className="helper-text">
+            Quick list view of the week for printing or pinning on the fridge.
+          </p>
+          <ol className="summary-list menu-summary-list">
+            {menuSummary.map((day) => (
+              <li key={day.date} className="menu-summary-item">
+                <div>
+                  <strong>{weekdayFormatter.format(new Date(day.date))}</strong>
+                  <div className="muted">{day.recipeName}</div>
+                </div>
+                <div className="menu-summary-item__meta">
+                  <span className="muted">{day.recipeDescription}</span>
+                  <span className="muted">{day.locked ? 'Locked' : 'Flexible'}</span>
+                </div>
+              </li>
+            ))}
+          </ol>
         </Card>
 
         <Card title="Shopping list" eyebrow="Auto-generated">

@@ -463,6 +463,25 @@ a {
   color: var(--muted);
 }
 
+.menu-summary-list {
+  margin-top: 16px;
+}
+
+.menu-summary-item {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(120, 160, 255, 0.2);
+  background: rgba(10, 15, 25, 0.6);
+}
+
+.menu-summary-item__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
 .settings-layout {
   align-items: start;
 }
@@ -525,7 +544,8 @@ a {
 
   .menu-day,
   .shopping-item,
-  .history-card {
+  .history-card,
+  .menu-summary-item {
     border: 1px solid #ccc;
     color: #000;
   }
